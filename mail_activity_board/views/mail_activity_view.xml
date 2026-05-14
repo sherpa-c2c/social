@@ -255,12 +255,7 @@
         <field name="priority" eval="2" />
         <field name="mode">primary</field>
         <field name="arch" type="xml">
-            <xpath expr='//field[@name="res_model"]' position='before'>
-                <field name="user_id" />
-                <field name="res_name" string="Origin" />
-            </xpath>
-
-            <xpath expr='//filter[@name="activities_overdue"]' position='before'>
+            <xpath expr='//filter[@name="filter_date_deadline_past"]' position='before'>
                 <filter
                     string="Act. next month"
                     name="activities_month"
@@ -274,19 +269,6 @@
                     help="Show activities scheduled for next 6 months."
                 />
                 <separator />
-            </xpath>
-
-            <xpath expr='//search/group' position='inside'>
-                <filter
-                    string="User"
-                    name='assigned_user'
-                    context="{'group_by':'user_id'}"
-                />
-                <filter
-                    string="Origin"
-                    name='origin'
-                    context="{'group_by': 'res_model_id'}"
-                />
             </xpath>
 
         </field>
