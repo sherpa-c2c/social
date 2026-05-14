@@ -6,11 +6,11 @@
         t-inherit-mode="extension"
     >
          <xpath expr="//button[hasclass('o-mail-Chatter-activity')]" position="after">
-            <t t-if="props.hasActivities">
+            <t t-if="props.has_activities">
                 <button
                     class="btn btn-link o_ChatterTopbar_button"
                     type="button"
-                    t-att-disabled="!state.thread.hasWriteAccess"
+                    t-att-disabled="!state.thread.canPostMessage"
                     t-on-click="_onListActivity"
                 >
                     <i class="fa fa-list" /> View Activities
