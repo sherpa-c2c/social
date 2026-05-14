@@ -115,11 +115,11 @@
 
     <!-- TREE VIEW -->
     <record id="mail_activity_view_tree" model="ir.ui.view">
-        <field name="name">mail.activity.boards.view.tree</field>
+        <field name="name">mail.activity.boards.view.list</field>
         <field name="model">mail.activity</field>
         <field name="inherit_id" ref="mail.mail_activity_view_tree" />
         <field name="arch" type="xml">
-            <xpath expr="//tree" position="attributes">
+            <xpath expr="//list" position="attributes">
                 <attribute name="default_order" />
                 <attribute
                     name="decoration-danger"
@@ -306,7 +306,7 @@
             name="view_ids"
             eval="[(5, 0, 0),
                           (0, 0, {'view_mode': 'kanban', 'view_id': ref('mail_activity_view_kanban')}),
-                          (0, 0, {'view_mode': 'tree', 'view_id': ref('mail_activity_view_tree')}),
+                          (0, 0, {'view_mode': 'list', 'view_id': ref('mail_activity_view_tree')}),
                           (0, 0, {'view_mode': 'form', 'view_id': ref('mail_activity_view_form_board')}),
                           (0, 0, {'view_mode': 'calendar'}),
                           (0, 0, {'view_mode': 'pivot'}),
