@@ -74,7 +74,7 @@ class TestMailActivityBoardMethods(TransactionCase):
         )
 
         # I create an opportunity, as employee
-        self.partner_client = self.env.ref("base.res_partner_1")
+        self.partner_client = self.env["res.partner"].create({"name": "Test Partner"})
 
         # assure there isn't any mail activity yet
         self.env["mail.activity"].sudo().search([]).unlink()
