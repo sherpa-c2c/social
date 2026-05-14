@@ -195,7 +195,7 @@ class TestMailActivityBoardMethods(TransactionCase):
         fields = result.get("models").get(action.get("res_model"))
         kwargs["fields"] = list(fields.keys())
 
-        result = self.env["mail.activity"].read_group(**kwargs)
+        result = self.env["mail.activity"].read_group(kwargs["domain"], kwargs["fields"], kwargs["groupby"])
 
         acts = []
         for group in result:
