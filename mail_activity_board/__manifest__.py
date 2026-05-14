@@ -12,7 +12,7 @@
     " Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "installable": True,
-    "depends": ["calendar", "spreadsheet_dashboard"],
+    "depends": ["calendar", "mail", "spreadsheet_dashboard"],
     "data": ["security/groups.xml", "views/mail_activity_view.xml"],
     "assets": {
         "web.assets_backend": [
