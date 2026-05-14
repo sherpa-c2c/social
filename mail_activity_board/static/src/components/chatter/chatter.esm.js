@@ -1,8 +1,14 @@
 /** @odoo-module **/
 import {Chatter} from "@mail/chatter/web_portal/chatter";
 import {patch} from "@web/core/utils/patch";
+import {useService} from "@web/core/utils/hooks";
 
 patch(Chatter.prototype, {
+    setup() {
+        super.setup(...arguments);
+        this.action = useService("action");
+    },
+
     // --------------------------------------------------------------------------
     // Handlers
     // --------------------------------------------------------------------------
