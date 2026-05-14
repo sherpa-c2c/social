@@ -192,12 +192,14 @@ class TestMailActivityBoardMethods(TransactionCase):
 
         kwargs["fields"] = ["id", "activity_type_id"]
 
-        result = self.env["mail.activity"].read_group(kwargs["domain"], kwargs["fields"], kwargs["groupby"])
+        result = self.env["mail.activity"].formatted_read_group(
+            kwargs["domain"], groupby=kwargs["groupby"]
+        )
 
         acts = []
         for group in result:
             records = self.env["mail.activity"].search_read(
-                domain=group.get("__domain"), fields=kwargs["fields"]
+                domain=group.get("__extra_domain"), fields=kwargs["fields"]
             )
             acts += [record_id.get("id") for record_id in records]
 
