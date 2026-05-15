@@ -26,16 +26,13 @@ msgstr "Aktív"
 #: model:ir.model.fields,field_description:mail_activity_done.field_account_journal__activity_ids
 #: model:ir.model.fields,field_description:mail_activity_done.field_account_move__activity_ids
 #: model:ir.model.fields,field_description:mail_activity_done.field_account_payment__activity_ids
-#: model:ir.model.fields,field_description:mail_activity_done.field_account_setup_bank_manual_config__activity_ids
 #: model:ir.model.fields,field_description:mail_activity_done.field_event_event__activity_ids
 #: model:ir.model.fields,field_description:mail_activity_done.field_event_registration__activity_ids
 #: model:ir.model.fields,field_description:mail_activity_done.field_mail_activity_mixin__activity_ids
 #: model:ir.model.fields,field_description:mail_activity_done.field_mailing_mailing__activity_ids
-#: model:ir.model.fields,field_description:mail_activity_done.field_product_pricelist__activity_ids
 #: model:ir.model.fields,field_description:mail_activity_done.field_product_product__activity_ids
 #: model:ir.model.fields,field_description:mail_activity_done.field_product_template__activity_ids
 #: model:ir.model.fields,field_description:mail_activity_done.field_res_partner__activity_ids
-#: model:ir.model.fields,field_description:mail_activity_done.field_res_partner_bank__activity_ids
 #: model:ir.model.fields,field_description:mail_activity_done.field_res_users__activity_ids
 msgid "Activities"
 msgstr "Tevékenységek"
@@ -79,8 +76,8 @@ msgstr "Állapot"
 
 #. module: mail_activity_done
 #: model:ir.model,name:mail_activity_done.model_res_users
-msgid "User"
-msgstr ""
+msgid "Users"
+msgstr "Felhasználók"
 
 #, python-format
 #~ msgid "%d days overdue"
@@ -101,6 +98,3 @@ msgstr ""
 #, python-format
 #~ msgid "Yesterday"
 #~ msgstr "Tegnap"
-
-#~ msgid "Users"
-#~ msgstr "Felhasználók"
