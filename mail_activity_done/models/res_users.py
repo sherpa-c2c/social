@@ -20,9 +20,12 @@ class ResUsers(models.Model):
         # Redo the method only with the archived records and subtract them.
         query = """SELECT array_agg(res_id) as res_ids, m.id, count(*),
                     CASE
-                        WHEN %(today)s::date - act.date_deadline::date = 0 Then 'today'
-                        WHEN %(today)s::date - act.date_deadline::date > 0 Then 'overdue'
-                        WHEN %(today)s::date - act.date_deadline::date < 0 Then 'planned'
+                        WHEN %(today)s::date - act.date_deadline::date = 0
+                            Then 'today'
+                        WHEN %(today)s::date - act.date_deadline::date > 0
+                            Then 'overdue'
+                        WHEN %(today)s::date - act.date_deadline::date < 0
+                            Then 'planned'
                     END AS states
                 FROM mail_activity AS act
                 JOIN ir_model AS m ON act.res_model_id = m.id
@@ -58,6 +61,8 @@ class ResUsers(models.Model):
                 [("id", "in", tuple(model_dic["all"]))]
             )
             if not allowed_records:
+                continue
+            if model.model not in user_activities:
                 continue
             today = len(model_dic["today"] & set(allowed_records.ids))
             overdue = len(model_dic["overdue"] & set(allowed_records.ids))
