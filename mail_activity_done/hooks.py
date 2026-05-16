@@ -1,7 +1,7 @@
 # Copyright 2018-22 ForgeFlow <http://www.forgeflow.com>
 # Copyright 2018 Odoo, S.A.
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
-from odoo import Command, fields
+from odoo import fields
 
 from odoo.addons.mail.models.mail_activity import MailActivity
 
@@ -55,22 +55,17 @@ def post_load_hook():
             activity.done = True
             activity.active = False
             activity.date_done = fields.Date.today()
-            record.message_post_with_view(
+            record.message_post_with_source(
                 "mail.message_activity_done",
-                values={
+                attachment_ids=attachment_ids,
+                author_id=self.env.user.partner_id.id,
+                render_values={
                     "activity": activity,
                     "feedback": feedback,
                     "display_assignee": activity.user_id != self.env.user,
                 },
-                subtype_id=self.env["ir.model.data"]._xmlid_to_res_id(
-                    "mail.mt_activities"
-                ),
                 mail_activity_type_id=activity.activity_type_id.id,
-                attachment_ids=[
-                    Command.link(attachment_id) for attachment_id in attachment_ids
-                ]
-                if attachment_ids
-                else [],
+                subtype_xmlid="mail.mt_activities",
             )
             messages |= record.message_ids[0]
 
